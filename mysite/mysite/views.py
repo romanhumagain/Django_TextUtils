@@ -1,27 +1,79 @@
 # Newly created file
 
 from django.http import HttpResponse
-
-# part1
-'''def index(request):
-    return HttpResponse('<h3><a href = "https://www.facebook.com/roman.humagain/">Facebook</a></h3>')
-
-def about(request):
-    return HttpResponse("I am very very fine !! Thank you")'''
-
-# code for part 2 bacic example of pipe line
+from django.shortcuts import render
 
 def index(request):
-    return HttpResponse("Home Page <a href '/'>Back</a>")
-def removepunc(request):
-    return HttpResponse("Remove Punc")
-def capfirst(request):
-    return HttpResponse("Capitalized")
-def newlineremove(request):
-    return HttpResponse("Line Removed")
-def spaceremove(request):
-    return HttpResponse("space removed")
-def charcount(request):
-    return HttpResponse("character counted")
+    return render(request, 'index.html')
+   
+def analyze(request):
+    # get the text
+    djtext =(request.GET.get('text', 'default'))
+    removepunc = request.GET.get('removepunc', 'off')
+    full_caps = request.GET.get("captialize", "off")
+    newline = request.GET.get('newline', "off")
+    spaceremover = request.GET.get("spaceremover", "off")
+    charactercount = request.GET.get("charactercount", "off")
+    wordcount = request.GET.get("wordcount", "off")
+
+    puncts ='''!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~'''
+    if removepunc == 'on':
+        analyzed = ""
+        
+        for char in djtext:
+            if char not in puncts:
+                analyzed = analyzed + char
+        parameters = {  
+                
+    'purpose':'Remove Punctuation','analyzed_text' : analyzed}
+        return render(request, 'analyze.html',parameters)
+
+    elif (full_caps == "on"):
+        analyzed = ""
+
+        for char in djtext:
+            analyzed = analyzed+char.upper()
+        
+        parameters = {'purpose':'Capitalize','analyzed_text' : analyzed}
+        return render(request, 'analyze.html',parameters)
+    
+    elif(newline == "on"):
+        analyzed = ""
+        for char in djtext:
+            if char != "\n":
+                analyzed = analyzed + char
+        parameters = {'purpose':'New Line Remover','analyzed_text' : analyzed }
+        return render(request, 'analyze.html', parameters)
+
+    elif(spaceremover == "on"):
+        analyzed = ""
+        for index, char in enumerate(djtext):
+            if not (djtext[index] == " " and djtext[index + 1] == " "):
+                analyzed = analyzed + char
+        parameters = {'purpose':'Space Remover Between Words','analyzed_text' : analyzed }
+        return render(request, 'analyze.html',parameters)
+    
+    elif (charactercount == "on"):
+        analyzed_count = 0
+
+        for char in djtext:
+            if not (char.isspace()):
+                analyzed_count += 1
+        parameters = {'purpose':'Character Counter','analyzed_text' : "The Number Of Character is " +str(analyzed_count) }
+        return render(request , "analyze.html", parameters)
+
+    elif(wordcount == "on"):
+        word_count = 0
+        listed_word =djtext.split()
+        for i in listed_word:
+            word_count +=1
+        parameters = {'purpose':'Character Counter','analyzed_text' : "The Number Of Words is " +str(word_count) }
+        return render(request , "analyze.html", parameters)
+    else:
+        return HttpResponse("ERROR 404")
+    
+    
+    
+    
 
 
