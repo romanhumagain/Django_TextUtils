@@ -28,7 +28,7 @@ def analyze(request):
     'purpose':'Remove Punctuation','analyzed_text' : analyzed}
         return render(request, 'analyze.html',parameters)
 
-    elif (full_caps == "on"):
+    if (full_caps == "on"):
         analyzed = ""
 
         for char in djtext:
@@ -37,15 +37,12 @@ def analyze(request):
         parameters = {'purpose':'Capitalize','analyzed_text' : analyzed}
         return render(request, 'analyze.html',parameters)
     
-    elif(newline == "on"):
-        analyzed = ""
-        for char in djtext:
-            if char != "\n":
-                analyzed = analyzed + char
+    if(newline == "on"):
+        analyzed = djtext.replace("\n", " ")
         parameters = {'purpose':'New Line Remover','analyzed_text' : analyzed }
         return render(request, 'analyze.html', parameters)
 
-    elif(spaceremover == "on"):
+    if(spaceremover == "on"):
         analyzed = ""
         for index, char in enumerate(djtext):
             if not (djtext[index] == " " and djtext[index + 1] == " "):
@@ -53,7 +50,7 @@ def analyze(request):
         parameters = {'purpose':'Space Remover Between Words','analyzed_text' : analyzed }
         return render(request, 'analyze.html',parameters)
     
-    elif (charactercount == "on"):
+    if (charactercount == "on"):
         analyzed_count = 0
 
         for char in djtext:
@@ -62,15 +59,15 @@ def analyze(request):
         parameters = {'purpose':'Character Counter','analyzed_text' : "The Number Of Character is " +str(analyzed_count) }
         return render(request , "analyze.html", parameters)
 
-    elif(wordcount == "on"):
+    if(wordcount == "on"):
         word_count = 0
         listed_word =djtext.split()
         for i in listed_word:
             word_count +=1
         parameters = {'purpose':'Character Counter','analyzed_text' : "The Number Of Words is " +str(word_count) }
         return render(request , "analyze.html", parameters)
-    else:
-        return HttpResponse("ERROR 404")
+    # else:
+    #     return HttpResponse("ERROR 404")
     
     
     

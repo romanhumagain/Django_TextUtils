@@ -13,30 +13,29 @@
     />
   </head>
   <style>
-    body{
-text-align: center;
-background-color:azure;
-
+    body {
+      text-align: center;
+      background-color: azure;
     }
-    .alert{
+    .alert {
       text-align: left;
     }
-    .button{
+    .button {
       margin-top: 15px;
       margin-bottom: 20px;
     }
-  
-.form-floating{
-  display: flex;
-  justify-content: center;
-}
 
-footer{
-  margin-top: 5px;
-  margin-bottom: 10px;
-  color:rgb(4, 4, 4);
-  font-family:'Times New Roman', Times, serif;
-}
+    .form-floating {
+      display: flex;
+      justify-content: center;
+    }
+
+    footer {
+      margin-top: 5px;
+      margin-bottom: 10px;
+      color: rgb(4, 4, 4);
+      font-family: "Times New Roman", Times, serif;
+    }
   </style>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -96,99 +95,106 @@ footer{
       </div>
     </nav>
     <div class="alert">
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      <strong>Welcome !</strong> to our Text Analyzer. Provide Your Text Below
-      <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="alert"
-        aria-label="Close"
-      ></button>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Welcome !</strong> to our Text Analyzer. Provide Your Text Below
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
     </div>
-  </div>
     <form action="/analyze" method="get">
       <div class="form-floating">
-        <textarea class="form-control" name="text" id="floatingTextarea2" style="height: 150px; width: 1000px;" placeholder="Your Text"></textarea>
+        <textarea
+          class="form-control"
+          name="text"
+          id="floatingTextarea2"
+          style="height: 150px; width: 1000px; border-color: black;"
+          placeholder="Your Text"
+        ></textarea>
       </div>
-    
-      <br/>
-       <div class="check">
-      <div
-        class="btn-group-vertical"
-        role="group"
-        aria-label="Vertical radio toggle button group"
-      >
-        <input
-          type="checkbox"
-          class="btn-check"
-          name="removepunc"
-          id="removepunc"
-          autocomplete="off"
-          
-        />
-        <label class="btn btn-outline-success" for="removepunc"
-          >Remove Punctuation</label
-        >
-        <input
-          type="checkbox"
-          class="btn-check"
-          name="captialize"
-          id="captialize"
-          autocomplete="off"
-        />
-        <label class="btn btn-outline-success" for="captialize"
-          >Capitalize</label
-        >
 
-        <input
-          type="checkbox"
-          class="btn-check"
-          name="newline"
-          id="newline"
-          autocomplete="off"
-        />
-        <label class="btn btn-outline-success" for="newline"
-          >New Line Remover</label
-        >
-
-        <input
-          type="checkbox"
-          class="btn-check"
-          name="spaceremover"
-          id="spaceremover"
-          autocomplete="off"
-        />
-        <label class="btn btn-outline-success" for="spaceremover"
-          >Space Remover</label
-        >
-
-        <input
-          type="checkbox"
-          class="btn-check"
-          name="charactercount"
-          id="charactercount"
-          autocomplete="off"
-        />
-        <label class="btn btn-outline-success" for="charactercount"
-          >Character Count</label
-        >
-
-        <input
-          type="checkbox"
-          class="btn-check"
-          name="wordcount"
-          id="wordcount"
-          autocomplete="off"
-        />
-        <label class="btn btn-outline-success" for="wordcount">Word Count</label>
-      </div>
       <br />
-    </div>
+      <div class="check">
+        <div
+          class="btn-group-vertical"
+          role="group"
+          aria-label="Vertical radio toggle button group"
+        >
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="removepunc"
+            id="removepunc"
+            autocomplete="off"
+          />
+          <label class="btn btn-outline-success" for="removepunc"
+            >Remove Punctuation</label
+          >
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="captialize"
+            id="captialize"
+            autocomplete="off"
+          />
+          <label class="btn btn-outline-success" for="captialize"
+            >Capitalize</label
+          >
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="newline"
+            id="newline"
+            autocomplete="off"
+          />
+          <label class="btn btn-outline-success" for="newline"
+            >New Line Remover</label
+          >
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="spaceremover"
+            id="spaceremover"
+            autocomplete="off"
+          />
+          <label class="btn btn-outline-success" for="spaceremover"
+            >Space Remover</label
+          >
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="charactercount"
+            id="charactercount"
+            autocomplete="off"
+          />
+          <label class="btn btn-outline-success" for="charactercount"
+            >Character Count</label
+          >
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="wordcount"
+            id="wordcount"
+            autocomplete="off"
+          />
+          <label class="btn btn-outline-success" for="wordcount"
+            >Word Count</label
+          >
+        </div>
+        <br />
+      </div>
       <div class="button">
-      <button type="submit" class="btn btn-outline-primary">
-        Analyze Text
-      </button>
-    </div>
+        <button type="submit" class="btn btn-outline-primary">
+          Analyze Text
+        </button>
+      </div>
     </form>
   </body>
   <footer>&copy;2023 All Right Reserved</footer>
