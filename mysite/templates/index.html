@@ -105,7 +105,7 @@
         ></button>
       </div>
     </div>
-    <form action="/analyze" method="get">
+    <form action="/analyze" method="post"> {% csrf_token %}
       <div class="form-floating">
         <textarea
           class="form-control"
