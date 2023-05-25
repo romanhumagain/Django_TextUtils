@@ -26,18 +26,18 @@ def analyze(request):
         parameters = {  
                 
     'purpose':'Remove Punctuation','analyzed_text' : analyzed}
-        return render(request, 'analyze.html',parameters)
-
-    elif (full_caps == "on"):
+        djtext = analyzed 
+    
+    if (full_caps == "on"):
         analyzed = ""
 
         for char in djtext:
             analyzed = analyzed+char.upper()
         
         parameters = {'purpose':'Capitalize','analyzed_text' : analyzed}
-        return render(request, 'analyze.html',parameters)
-    
-    elif (newline == "on"):
+        djtext = analyzed
+        
+    if (newline == "on"):
         analyzed = ""
         skip_space = False
         for char in djtext:
@@ -51,15 +51,15 @@ def analyze(request):
                     skip_space = False
         print("pre", analyzed)
         parameters = {'purpose': 'New Line Remover', 'analyzed_text': analyzed}
-        return render(request, 'analyze.html', parameters)
+        djtext = analyzed
     
-    elif (spaceremover == "on"):
+    if (spaceremover == "on"):
         analyzed = ""
         for index, char in enumerate(djtext):
             if not (djtext[index] == " " and djtext[index + 1] == " "):
                 analyzed = analyzed + char
         parameters = {'purpose':'Space Remover Between Words','analyzed_text' : analyzed }
-        return render(request, 'analyze.html',parameters)
+        djtext = analyzed
     
     elif (charactercount == "on"):
         analyzed_count = 0
@@ -77,8 +77,9 @@ def analyze(request):
             word_count +=1
         parameters = {'purpose':'Character Counter','analyzed_text' : "The Number Of Words is " +str(word_count) }
         return render(request , "analyze.html", parameters)
-    else:
+    elif(removepunc != "on"  and full_caps != "on" and newline != "on" and spaceremover != "on" and wordcount != "on" and charactercount != "on"):
         return HttpResponse("ERROR 404")
+    return render(request,'analyze.html',parameters)
     
     
     

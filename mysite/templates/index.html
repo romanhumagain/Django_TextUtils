@@ -15,7 +15,7 @@
   <style>
     body {
       text-align: center;
-      background-color: azure;
+      background-color: rgb(255, 255, 255);
     }
     .alert {
       text-align: left;
@@ -105,13 +105,14 @@
         ></button>
       </div>
     </div>
-    <form action="/analyze" method="post"> {% csrf_token %}
+    <form action="/analyze" method="post">
+      {% csrf_token %}
       <div class="form-floating">
         <textarea
           class="form-control"
           name="text"
           id="floatingTextarea2"
-          style="height: 150px; width: 1000px; border-color: black;"
+          style="height: 150px; width: 1000px; border-color: black"
           placeholder="Your Text"
         ></textarea>
       </div>
@@ -197,5 +198,5 @@
       </div>
     </form>
   </body>
-  <footer>&copy;2023 All Right Reserved</footer>
+  <footer>&copy;2023 Roman All Right Reserved</footer>
 </html>
